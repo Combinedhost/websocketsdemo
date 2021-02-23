@@ -39,7 +39,7 @@
                 url: "{{ url('/message') }}",
                 type: "POST",
                 data: {
-                    message : messengerInput.value,
+                    message: messengerInput.value,
                     _token: "{{csrf_token()}}"
                 },
                 success: function () {
@@ -49,7 +49,7 @@
         });
 
         function appendMessage(name, img, side, text) {
-               const msgHTML = `
+            const msgHTML = `
                 <div class="msg ${side}-msg">
                   <div class="msg-img" style="background-image: url(${img})"></div>
 
@@ -81,7 +81,7 @@
 
         window.Echo.channel('chat-room').listen('.App\\Events\\NewChatMessage', (e) => {
             var direction = ("{{auth()->id()}}" == e.user.id) ? "right" : "left";
-            appendMessage(e.user.name, 'https://image.flaticon.com/icons/svg/145/145867.svg' , direction, e.message);
+            appendMessage(e.user.name, 'https://image.flaticon.com/icons/svg/145/145867.svg', direction, e.message);
         });
 
     </script>
