@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/message', 'MessageController@broadcast');
+Route::post('/message', [\App\Http\Controllers\ChatController::class, 'broadcast']);
 
 Auth::routes();
 

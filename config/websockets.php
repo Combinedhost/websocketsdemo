@@ -73,6 +73,8 @@ return [
         Authorize::class,
     ],
 
+
+
     'statistics' => [
         /*
          * This model will be used to store the statistics of the WebSocketsServer.

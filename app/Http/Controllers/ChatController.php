@@ -10,11 +10,19 @@ class ChatController extends Controller
 
     public function broadcast(Request $request) {
 
-        event(new NewChatMessage($request->message, $request->user));
+        try{
+            event(new NewChatMessage($request->message, auth()->user()));
 
-        return response()->json([
-            'message' => 'Message sent successfully'
-        ], 200);
+            return response()->json([
+                'message' => 'Message sent successfully'
+            ], 200);
+        } catch (\Exception $exception){
+            return $exception;
+            return response()->json([
+                'message' => 'Some error occurred'
+            ], 500);
+        }
+
     }
 
 }

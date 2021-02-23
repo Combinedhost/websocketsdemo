@@ -36,10 +36,12 @@ window.Pusher = require('pusher-js');
 window.Echo = new Echo({
     broadcaster: 'pusher',
     key: process.env.MIX_PUSHER_APP_KEY,
+    wsHost: 'websockets_demo.test',
+    wsPort: 6001,
+    wssPort: 6001,
+    disableStats: true,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     encrypted: false,
-    wsHost: process.env.MIX_WEBSOCKET_HOST,
-    wsPort: process.env.MIX_WEBSOCKET_PORT,
-    disableStats: true,
-    enabledTransports: ['ws']
+    forceTLS: false,
+    enabledTransports: ['ws'],
 });
